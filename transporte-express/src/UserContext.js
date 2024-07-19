@@ -4,11 +4,12 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/current_user', {
+                const response = await fetch(`${BACKEND_URL}/api/current_user`, {
                     credentials: 'include',
                 });
                 const result = await response.json();
@@ -19,7 +20,7 @@ export const UserProvider = ({ children }) => {
         };
 
         fetchUser();
-    }, []);
+    }, [BACKEND_URL]);
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
