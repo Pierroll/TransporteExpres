@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Configuración de la base de datos
-const sequelize = new Sequelize('postgres://postgres:Pierol123@localhost:5432/transporte_express');
+const sequelize = new Sequelize('postgresql://transporte_express_user:auwr70HD5gTrpcFgjbUOAuZ4kNXeYirX@dpg-cqdabet6l47c73frk31g-a.oregon-postgres.render.com/transporte_express');
 
 // Definición del modelo User
 const User = sequelize.define('User', {

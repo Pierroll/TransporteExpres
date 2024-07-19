@@ -15,7 +15,7 @@ import WhatsappButton from './components/WhatsappButton';
 const App = () => {
     const [user, setUser] = useState(null);
     const [routes, setRoutes] = useState([]);
-    const API_URL = process.env.REACT_APP_BACKEND_URL;
+    const API_URL = process.env.BACKEND_URL;
 
     useEffect(() => {
         fetch(`${API_URL}/api/current_user`, {

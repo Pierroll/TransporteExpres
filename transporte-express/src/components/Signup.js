@@ -21,7 +21,7 @@ const Signup = () => {
     }, []);
 
     const handleGoogleSignUp = () => {
-        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
+        window.location.href = `${process.env.BACKEND_URL}/auth/google`;
     };
 
     return (

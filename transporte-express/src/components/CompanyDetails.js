@@ -5,7 +5,7 @@ import './CompanyDetails.css';
 const CompanyDetails = () => {
     const { id } = useParams();
     const [company, setCompany] = useState(null);
-    const API_URL = process.env.REACT_APP_BACKEND_URL;
+    const API_URL = process.env.BACKEND_URL;
 
     useEffect(() => {
         fetch(`${API_URL}/api/transport-companies/${id}`)

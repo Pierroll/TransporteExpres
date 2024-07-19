@@ -9,7 +9,7 @@ const RouteSearch = ({ onSearch }) => {
 
     useEffect(() => {
         // Fetch origins from the backend
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/origins`)
+        fetch(`${process.env.BACKEND_URL}/api/origins`)
             .then(response => response.json())
             .then(data => setOrigins(data))
             .catch(error => console.error('Error fetching origins:', error));
@@ -18,7 +18,7 @@ const RouteSearch = ({ onSearch }) => {
     useEffect(() => {
         if (selectedOrigin) {
             // Fetch destinations based on the selected origin
-            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/destinations?origin=${selectedOrigin}`)
+            fetch(`${process.env.BACKEND_URL}/api/destinations?origin=${selectedOrigin}`)
                 .then(response => response.json())
                 .then(data => setDestinations(data))
                 .catch(error => console.error('Error fetching destinations:', error));

@@ -7,7 +7,7 @@ const TransportCompanies = () => {
     const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/transport-companies`)
+        fetch(`${process.env.BACKEND_URL}/api/transport-companies`)
             .then(response => response.json())
             .then(data => {
                 setCompanies(data);
