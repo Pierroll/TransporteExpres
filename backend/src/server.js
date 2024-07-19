@@ -7,11 +7,21 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 require('dotenv').config();
+
 const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
 const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
 
 // Configuración de la base de datos
-const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`);
+const sequelize = new Sequelize(process.env.DB_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false // Esto es necesario para conectar de forma segura a Render
+        }
+    }
+});
 
 // Probar la conexión a la base de datos
 sequelize.authenticate()
