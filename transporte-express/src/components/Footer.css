@@ -1,0 +1,53 @@
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 5px 0;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+  
+  .facebook-button {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #3b5998;
+    font-weight: bold;
+  }
+  
+  .facebook-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  

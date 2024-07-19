@@ -1,0 +1,86 @@
+/* src/App.css */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #82a84e;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  padding: 10px 20px; 
+}
+
+.App-header h1 {
+  font-size: 1.9rem;
+  margin: 0.5em 0;
+  color : white !important;
+  margin-top : 20px;
+}
+
+.App-header p {
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0.5em 0;
+  color:rgb(232, 248, 246);
+  text-align: justify;
+}
+
+.transport-companies h2 {
+  font-size: 2rem;
+  margin: 1em 0;
+}
+
+.transport-companies ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transport-companies li {
+  font-size: 1.2rem;
+  margin: 0.5em 0;
+}
+
+/* Agregar espacio en la página de registro */
+.signup-container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.route-search {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.route-search div {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.routes-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.route-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.route-item:hover {
+  transform: scale(1.05);
+}
+
+.route-item h3 {
+  margin-top: 0;
+}

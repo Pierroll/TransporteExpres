@@ -1,0 +1,48 @@
+/* src/components/RouteSearch.css */
+.route-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.route-search-field {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.route-search-field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.route-search-field select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 200px;
+}
+
+.route-search-button {
+    padding: 10px 20px;
+    margin-left: 20px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.route-search-button:hover {
+    background-color: #45a049;
+}

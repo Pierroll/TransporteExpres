@@ -1,0 +1,42 @@
+/* TransportCompanies.css */
+
+.companies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Muestra 3 compañías por fila */
+    gap: 20px;
+    padding: 20px;
+}
+
+.company-card-link {
+    text-decoration: none; /* Elimina la subrayado del enlace */
+    color: inherit; /* Mantiene el color del texto original */
+}
+
+.company-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 47px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.company-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.company-logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.company-name {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.company-description {
+    margin-bottom: 10px;
+}
