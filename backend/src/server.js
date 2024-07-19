@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log('Database URL:', process.env.DATABASE_URL);
 const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
 const passport = require('passport');
@@ -6,19 +8,15 @@ const session = require('express-session');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
-require('dotenv').config();
-
 const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
 const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
 
 // Configuración de la base de datos
-const sequelize = new Sequelize(process.env.DB_URL, {
-    dialect: 'postgres',
-    protocol: 'postgres',
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
         ssl: {
             require: true,
-            rejectUnauthorized: false // Esto es necesario para conectar de forma segura a Render
+            rejectUnauthorized: false // Este ajuste puede ser necesario dependiendo de la configuración del servidor
         }
     }
 });
