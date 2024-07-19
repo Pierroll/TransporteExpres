@@ -7,6 +7,8 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 require('dotenv').config();
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
 
 // Configuración de la base de datos
 const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`);
@@ -114,10 +116,9 @@ app.use(session({
 
 // Configuración de CORS
 app.use(cors({
-    origin: process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000',
+    origin: FRONTEND_URL,
     credentials: true, 
 }));
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -138,7 +139,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:5000/auth/google/callback'
+    callbackURL: `${BACKEND_URL}/auth/google/callback`
 }, async (token, tokenSecret, profile, done) => {
     try {
         const [user, created] = await User.findOrCreate({
@@ -171,13 +172,13 @@ app.get('/auth/google',
 );
 
 app.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login?error=true' }),
+    passport.authenticate('google', { failureRedirect: `${FRONTEND_URL}/login?error=true` }),
     (req, res) => {
         const isNew = req.user.created ? 'true' : 'false';
         const promotionCode = req.user.promotionCode;
         const redirectUrl = isNew === 'true'
-            ? `http://localhost:3000/signup?promoCode=${promotionCode}&isNew=${isNew}`
-            : 'http://localhost:3000/';
+            ? `${FRONTEND_URL}/signup?promoCode=${promotionCode}&isNew=${isNew}`
+            : `${FRONTEND_URL}/`;
         res.redirect(redirectUrl);
     }
 );
@@ -185,7 +186,7 @@ app.get('/auth/google/callback',
 app.get('/logout', (req, res) => {
     req.logout(err => {
         if (err) { return next(err); }
-        res.redirect('http://localhost:3000/');
+        res.redirect(FRONTEND_URL);
     });
 });
 
@@ -226,7 +227,7 @@ app.get('/api/transport-companies/:id', async (req, res) => {
 
 // Iniciar el servidor
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on ${BACKEND_URL}`);
 });
 
 app.get('/auth/google/callback',
@@ -235,11 +236,12 @@ app.get('/auth/google/callback',
         // El flag 'isNew' indica si el usuario ha sido creado en esta sesión
         const isNew = req.user && req.user.created ? 'true' : 'false';
         const redirectUrl = isNew === 'true'
-            ? `http://localhost:3000/signup?promoCode=${req.user.promotionCode}&isNew=${isNew}`
-            : `http://localhost:3000/`;
+            ? `${FRONTEND_URL}/signup?promoCode=${req.user.promotionCode}&isNew=${isNew}`
+            : FRONTEND_URL;
         res.redirect(redirectUrl);
     }
 );
+
 app.get('/api/origins', async (req, res) => {
     try {
         const origins = await Route.findAll({
