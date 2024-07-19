@@ -1,4 +1,3 @@
-// src/components/CompanyDetails.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './CompanyDetails.css';
@@ -6,13 +5,14 @@ import './CompanyDetails.css';
 const CompanyDetails = () => {
     const { id } = useParams();
     const [company, setCompany] = useState(null);
+    const API_URL = process.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/transport-companies/${id}`)
+        fetch(`${API_URL}/api/transport-companies/${id}`)
             .then(response => response.json())
             .then(data => setCompany(data))
             .catch(error => console.error('Error fetching company details:', error));
-    }, [id]);
+    }, [id, API_URL]);
 
     if (!company) return <p>Loading...</p>;
 

@@ -114,9 +114,10 @@ app.use(session({
 
 // Configuración de CORS
 app.use(cors({
-    origin: 'http://localhost:3000', // Permitir la URL de tu frontend
-    credentials: true, // Permitir el envío de cookies en las solicitudes CORS
+    origin: process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000',
+    credentials: true, 
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -5,9 +5,10 @@ import { UserContext } from '../UserContext';
 
 const Navbar = () => {
     const { user, setUser } = useContext(UserContext); // eslint-disable-line no-unused-vars
+    const API_URL = process.env.REACT_APP_BACKEND_URL;
 
     const handleLogout = () => {
-        window.location.href = 'http://localhost:5000/logout';
+        window.location.href = `${API_URL}/logout`;
     };
 
     return (
