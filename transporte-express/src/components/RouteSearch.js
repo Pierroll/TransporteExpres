@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RouteSearch.css';
 
 const RouteSearch = ({ onSearch }) => {
@@ -7,6 +8,7 @@ const RouteSearch = ({ onSearch }) => {
     const [selectedOrigin, setSelectedOrigin] = useState('');
     const [selectedDestination, setSelectedDestination] = useState('');
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch origins from the backend
@@ -30,6 +32,10 @@ const RouteSearch = ({ onSearch }) => {
         onSearch(selectedOrigin, selectedDestination);
     };
 
+    const handleResultClick = (companyId) => {
+        navigate(`/company/${companyId}`);
+    };
+
     return (
         <div className="route-search">
             <div className="route-search-field">
@@ -51,6 +57,19 @@ const RouteSearch = ({ onSearch }) => {
                 </select>
             </div>
             <button className="route-search-button" onClick={handleSearch}>Buscar</button>
+
+            {/* Mostrar resultados de la búsqueda */}
+            <div className="routes-list">
+                {routes.map(route => (
+                    <div key={route.id} className="route-item" onClick={() => handleResultClick(route.TransportCompany.id)}>
+                        <h3>{route.origin} - {route.destination}</h3>
+                        <p>{route.TransportCompany.name}</p>
+                        <p>Salida: {route.departureTime}</p>
+                        <p>Llegada: {route.arrivalTime}</p>
+                        <p>Precio: S/{route.TransportCompany.price}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
