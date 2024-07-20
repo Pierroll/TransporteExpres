@@ -1,66 +1,92 @@
 TRANSPORTEV2/
 ├── backend/
-│   ├── .vercel/
-│   │   ├── project.json
-│   │   └── README.txt
 │   ├── node_modules/
 │   ├── src/
+│   │   ├── models.js
+│   │   └── server.js
+│   ├── .env
 │   ├── .gitignore
 │   ├── package-lock.json
 │   ├── package.json
-│   └── vercel.json
-├── transporte-express/
-│   ├── .vercel/
-│   │   ├── project.json
-│   │   └── README.txt
-│   ├── build/
-│   │   ├── images/
-│   │   │   ├── google-icon.png
-│   │   │   ├── logo1.png
-│   │   │   ├── logo2.png
-│   │   │   ├── logo3.png
-│   │   │   ├── logo4.png
-│   │   │   ├── logo5.png
-│   │   │   ├── logo6.png
-│   │   │   └── whatsapp-icon.png
-│   │   ├── static/
-│   │       ├── asset-manifest.json
-│   │       ├── favicon.ico
-│   │       ├── index.html
-│   │       ├── logo192.png
-│   │       ├── logo512.png
-│   │       ├── manifest.json
-│   │       └── robots.txt
-│   ├── node_modules/
-│   ├── public/
-│   │   ├── images/
-│   │   │   ├── google-icon.png
-│   │   │   ├── logo1.png
-│   │   │   ├── logo2.png
-│   │   │   ├── logo3.png
-│   │   │   ├── logo4.png
-│   │   │   ├── logo5.png
-│   │   │   ├── logo6.png
-│   │   │   └── whatsapp-icon.png
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   ├── src/
-│   │   ├── components/
-│   │   ├── App.css
-│   │   ├── App.js
-│   │   ├── App.test.js
-│   │   ├── index.css
-│   │   ├── index.js
-│   │   ├── logo.svg
-│   │   ├── reportWebVitals.js
-│   │   ├── setupTests.js
-│   │   └── UserContext.js
-│   ├── .gitignore
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── README.md
-│   └── vercel.json
+└── transporte-express/
+    ├── build/
+    │   ├── images/
+    │   │   ├── facebook-icon.png
+    │   │   ├── google-icon.png
+    │   │   ├── logo1.png
+    │   │   ├── logo2.png
+    │   │   ├── logo3.png
+    │   │   ├── logo4.png
+    │   │   ├── logo5.png
+    │   │   ├── logo6.png
+    │   │   └── whatsapp-icon.png
+    │   ├── static/
+    │       ├── asset-manifest.json
+    │       ├── favicon.ico
+    │       ├── index.html
+    │       ├── logo192.png
+    │       ├── logo512.png
+    │       ├── manifest.json
+    │       └── robots.txt
+    ├── node_modules/
+    ├── public/
+    │   ├── images/
+    │   │   ├── favicon.ico
+    │   │   ├── google-icon.png
+    │   │   ├── logo1.png
+    │   │   ├── logo2.png
+    │   │   ├── logo3.png
+    │   │   ├── logo4.png
+    │   │   ├── logo5.png
+    │   │   ├── logo6.png
+    │   │   ├── logo192.png
+    │   │   ├── logo512.png
+    │   │   └── whatsapp-icon.png
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── src/
+    │   ├── components/
+    │   │   ├── CompanyButton.css
+    │   │   ├── CompanyButton.js
+    │   │   ├── CompanyDetails.css
+    │   │   ├── CompanyDetails.js
+    │   │   ├── Footer.css
+    │   │   ├── Footer.js
+    │   │   ├── GoogleButton.css
+    │   │   ├── GoogleButton.js
+    │   │   ├── Login.css
+    │   │   ├── Login.js
+    │   │   ├── Navbar.css
+    │   │   ├── Navbar.js
+    │   │   ├── PromotionModal.css
+    │   │   ├── PromotionModal.js
+    │   │   ├── RouteSearch.css
+    │   │   ├── RouteSearch.js
+    │   │   ├── Signup.css
+    │   │   ├── Signup.js
+    │   │   ├── TransportCompanies.css
+    │   │   ├── TransportCompanies.js
+    │   │   ├── TransportCompanyCard.js
+    │   │   ├── TransportCompanyCard.css
+    │   │   ├── WhatsappButton.js
+    │   │   ├── WhatsappButton.css
+    │   ├── App.css
+    │   ├── App.js
+    │   ├── App.test.js
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── logo.svg
+    │   ├── reportWebVitals.js
+    │   ├── setupTests.js
+    │   └── UserContext.js
+    ├── .env
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    ├── README.md
+    ├── DISEÑO DE DIRECTORIO.txt
+    └── scriptsdb.txt
