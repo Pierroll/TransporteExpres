@@ -5,8 +5,8 @@ import './Navbar.css';
 import { UserContext } from '../UserContext';
 
 const Navbar = () => {
-    const { user, setUser } = useContext(UserContext); // eslint-disable-line no-unused-vars
-    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+    const { user } = useContext(UserContext); // eslint-disable-line no-unused-vars
+    const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000';
 
     const handleLogout = () => {
         window.location.href = `${BACKEND_URL}/logout`;
