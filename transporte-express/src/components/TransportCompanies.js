@@ -5,9 +5,10 @@ import './TransportCompanies.css';
 
 const TransportCompanies = () => {
     const [companies, setCompanies] = useState([]);
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
-        fetch(`${process.env.BACKEND_URL}/api/transport-companies`)
+        fetch(`${BACKEND_URL}/api/transport-companies`)
             .then(response => response.json())
             .then(data => {
                 setCompanies(data);
@@ -15,7 +16,7 @@ const TransportCompanies = () => {
             .catch(error => {
                 console.error('Error fetching companies:', error);
             });
-    }, []);
+    }, [BACKEND_URL]);
 
     return (
         <div className="companies-container">

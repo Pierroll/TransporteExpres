@@ -1,8 +1,9 @@
+// GoogleButton.js
 import React from 'react';
 import './GoogleButton.css';
 
 const GoogleButton = () => {
-    const API_URL = process.env.BACKEND_URL;
+    const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     const handleGoogleSignIn = () => {
         window.location.href = `${API_URL}/auth/google`;

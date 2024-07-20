@@ -1,5 +1,4 @@
-// src/components/TransportCompanyCard.js
-
+// TransportCompanyCard.js
 import React from 'react';
 import './TransportCompanyCard.css';
 
@@ -10,7 +9,7 @@ const TransportCompanyCard = ({ company }) => {
             <h3>{company.name}</h3>
             <p>{company.description}</p>
             <div className="routes">
-                {company.routes.map((route, index) => (
+                {company.Routes && company.Routes.map((route, index) => (
                     <div key={index} className="route">
                         <span>{route.origin} → {route.destination}</span>
                         <span>{route.departureTime} - {route.arrivalTime}</span>

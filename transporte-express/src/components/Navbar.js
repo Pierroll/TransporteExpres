@@ -1,3 +1,4 @@
+// Navbar.js
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
@@ -5,10 +6,10 @@ import { UserContext } from '../UserContext';
 
 const Navbar = () => {
     const { user, setUser } = useContext(UserContext); // eslint-disable-line no-unused-vars
-    const API_URL = process.env.BACKEND_URL;
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     const handleLogout = () => {
-        window.location.href = `${API_URL}/logout`;
+        window.location.href = `${BACKEND_URL}/logout`;
     };
 
     return (

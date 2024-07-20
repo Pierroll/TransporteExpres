@@ -1,3 +1,4 @@
+// CompanyDetails.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './CompanyDetails.css';
@@ -5,7 +6,7 @@ import './CompanyDetails.css';
 const CompanyDetails = () => {
     const { id } = useParams();
     const [company, setCompany] = useState(null);
-    const API_URL = process.env.BACKEND_URL;
+    const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
         fetch(`${API_URL}/api/transport-companies/${id}`)

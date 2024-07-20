@@ -1,3 +1,4 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
@@ -15,7 +16,7 @@ import WhatsappButton from './components/WhatsappButton';
 const App = () => {
     const [user, setUser] = useState(null);
     const [routes, setRoutes] = useState([]);
-    const API_URL = process.env.BACKEND_URL;
+    const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
         fetch(`${API_URL}/api/current_user`, {

@@ -1,3 +1,4 @@
+// RouteSearch.js
 import React, { useState, useEffect } from 'react';
 import './RouteSearch.css';
 
@@ -6,24 +7,25 @@ const RouteSearch = ({ onSearch }) => {
     const [destinations, setDestinations] = useState([]);
     const [selectedOrigin, setSelectedOrigin] = useState('');
     const [selectedDestination, setSelectedDestination] = useState('');
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
         // Fetch origins from the backend
-        fetch(`${process.env.BACKEND_URL}/api/origins`)
+        fetch(`${BACKEND_URL}/api/origins`)
             .then(response => response.json())
             .then(data => setOrigins(data))
             .catch(error => console.error('Error fetching origins:', error));
-    }, []);
+    }, [BACKEND_URL]);
 
     useEffect(() => {
         if (selectedOrigin) {
             // Fetch destinations based on the selected origin
-            fetch(`${process.env.BACKEND_URL}/api/destinations?origin=${selectedOrigin}`)
+            fetch(`${BACKEND_URL}/api/destinations?origin=${selectedOrigin}`)
                 .then(response => response.json())
                 .then(data => setDestinations(data))
                 .catch(error => console.error('Error fetching destinations:', error));
         }
-    }, [selectedOrigin]);
+    }, [selectedOrigin, BACKEND_URL]);
 
     const handleSearch = () => {
         onSearch(selectedOrigin, selectedDestination);

@@ -1,3 +1,4 @@
+// Signup.js
 import React, { useEffect, useState } from 'react';
 import GoogleButton from './GoogleButton'; // eslint-disable-line no-unused-vars
 import PromotionModal from './PromotionModal';
@@ -6,6 +7,7 @@ import './Signup.css';
 const Signup = () => {
     const [promotionCode, setPromotionCode] = useState(null);
     const [isNewUser, setIsNewUser] = useState(false);
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
         // Verificar si hay parámetros en la URL indicando un nuevo registro
@@ -21,7 +23,7 @@ const Signup = () => {
     }, []);
 
     const handleGoogleSignUp = () => {
-        window.location.href = `${process.env.BACKEND_URL}/auth/google`;
+        window.location.href = `${BACKEND_URL}/auth/google`;
     };
 
     return (
