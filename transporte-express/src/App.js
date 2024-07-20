@@ -14,7 +14,6 @@ import WhatsappButton from './components/WhatsappButton';
 
 const App = () => {
     const [user, setUser] = useState(null);
-    const [routes, setRoutes] = useState([]);
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
     const navigate = useNavigate();
 
@@ -36,7 +35,6 @@ const App = () => {
     const handleSearch = (origin, destination) => {
         fetch(`${BACKEND_URL}/api/routes?origin=${origin}&destination=${destination}`)
             .then(response => response.json())
-            .then(data => setRoutes(data))
             .catch(error => console.error('Error fetching routes:', error));
     };
 
@@ -63,20 +61,7 @@ const App = () => {
                         </p>
                         {user && <p>Bienvenido, {user.name}</p>}
                     </header>
-                    <RouteSearch onSearch={handleSearch} />
-                    {routes.length > 0 && (
-                        <div className="routes-list">
-                            {routes.map(route => (
-                                <div key={route.id} className="route-item" onClick={() => handleRouteClick(route.TransportCompany.id)}>
-                                    <h3>{route.origin} - {route.destination}</h3>
-                                    <p>{route.TransportCompany.name}</p>
-                                    <p>Salida: {route.departureTime}</p>
-                                    <p>Llegada: {route.arrivalTime}</p>
-                                    <p>Precio: S/{route.TransportCompany.price}</p>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                    <RouteSearch onSearch={handleSearch} onRouteClick={handleRouteClick} />
                 </>
             )}
             <Routes>

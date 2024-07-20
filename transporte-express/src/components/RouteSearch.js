@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RouteSearch.css';
 
-const RouteSearch = ({ onSearch }) => {
+const RouteSearch = ({ onSearch, onRouteClick }) => {
     const [origins, setOrigins] = useState([]);
     const [destinations, setDestinations] = useState([]);
     const [selectedOrigin, setSelectedOrigin] = useState('');
     const [selectedDestination, setSelectedDestination] = useState('');
+    const [routes, setRoutes] = useState([]);  // Definimos routes aquí
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch origins from the backend
         fetch(`${BACKEND_URL}/api/origins`)
             .then(response => response.json())
             .then(data => setOrigins(data))
@@ -20,7 +20,6 @@ const RouteSearch = ({ onSearch }) => {
 
     useEffect(() => {
         if (selectedOrigin) {
-            // Fetch destinations based on the selected origin
             fetch(`${BACKEND_URL}/api/destinations?origin=${selectedOrigin}`)
                 .then(response => response.json())
                 .then(data => setDestinations(data))
@@ -29,7 +28,10 @@ const RouteSearch = ({ onSearch }) => {
     }, [selectedOrigin, BACKEND_URL]);
 
     const handleSearch = () => {
-        onSearch(selectedOrigin, selectedDestination);
+        fetch(`${BACKEND_URL}/api/routes?origin=${selectedOrigin}&destination=${selectedDestination}`)
+            .then(response => response.json())
+            .then(data => setRoutes(data))  // Asignamos los datos a routes aquí
+            .catch(error => console.error('Error fetching routes:', error));
     };
 
     const handleResultClick = (companyId) => {
@@ -58,7 +60,6 @@ const RouteSearch = ({ onSearch }) => {
             </div>
             <button className="route-search-button" onClick={handleSearch}>Buscar</button>
 
-            {/* Mostrar resultados de la búsqueda */}
             <div className="routes-list">
                 {routes.map(route => (
                     <div key={route.id} className="route-item" onClick={() => handleResultClick(route.TransportCompany.id)}>
