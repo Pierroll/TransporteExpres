@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
@@ -16,10 +15,10 @@ import WhatsappButton from './components/WhatsappButton';
 const App = () => {
     const [user, setUser] = useState(null);
     const [routes, setRoutes] = useState([]);
-    const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
     useEffect(() => {
-        fetch(`${API_URL}/api/current_user`, {
+        fetch(`${BACKEND_URL}/api/current_user`, {
             credentials: 'include'
         })
             .then(response => response.json())
@@ -31,10 +30,10 @@ const App = () => {
             .catch(error => {
                 console.error("Error fetching current user:", error);
             });
-    }, [API_URL]);
+    }, [BACKEND_URL]);
 
     const handleSearch = (origin, destination) => {
-        fetch(`${API_URL}/api/routes?origin=${origin}&destination=${destination}`)
+        fetch(`${BACKEND_URL}/api/routes?origin=${origin}&destination=${destination}`)
             .then(response => response.json())
             .then(data => setRoutes(data))
             .catch(error => console.error('Error fetching routes:', error));

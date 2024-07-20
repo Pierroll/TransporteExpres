@@ -233,6 +233,7 @@ app.get('/api/transport-companies/:id', async (req, res) => {
     }
 });
 
+
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Server running on ${BACKEND_URL}`);

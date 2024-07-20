@@ -1,4 +1,3 @@
-// RouteSearch.js
 import React, { useState, useEffect } from 'react';
 import './RouteSearch.css';
 
