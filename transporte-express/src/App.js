@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import TransportCompanies from './components/TransportCompanies';
 import CompanyDetails from './components/CompanyDetails';
@@ -16,6 +16,7 @@ const App = () => {
     const [user, setUser] = useState(null);
     const [routes, setRoutes] = useState([]);
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${BACKEND_URL}/api/current_user`, {
@@ -37,6 +38,10 @@ const App = () => {
             .then(response => response.json())
             .then(data => setRoutes(data))
             .catch(error => console.error('Error fetching routes:', error));
+    };
+
+    const handleRouteClick = (companyId) => {
+        navigate(`/company/${companyId}`);
     };
 
     const location = useLocation();
@@ -62,7 +67,7 @@ const App = () => {
                     {routes.length > 0 && (
                         <div className="routes-list">
                             {routes.map(route => (
-                                <div key={route.id} className="route-item" onClick={() => window.location.href = `/company/${route.TransportCompany.id}`}>
+                                <div key={route.id} className="route-item" onClick={() => handleRouteClick(route.TransportCompany.id)}>
                                     <h3>{route.origin} - {route.destination}</h3>
                                     <p>{route.TransportCompany.name}</p>
                                     <p>Salida: {route.departureTime}</p>
