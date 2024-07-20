@@ -1,53 +1,53 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
 .App-header {
-  background-color: #001f3f;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
+    background-color: #001f3f;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
 
 .App-header h1 {
-  margin: 0;
-  font-size: 2.5em;
+    margin: 0;
+    font-size: 2.5em;
 }
 
 .App-header p {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 .routes-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .route-item {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  padding: 20px;
-  width: 300px;
-  transition: transform 0.2s;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.2s;
 }
 
 .route-item:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .route-item h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.5em;
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
 }
 
 .route-item p {
-  margin: 5px 0;
-  font-size: 1em;
+    margin: 5px 0;
+    font-size: 1em;
 }
