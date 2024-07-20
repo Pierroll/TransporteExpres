@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './RouteSearch.css';
 
-const RouteSearch = ({ onSearch, onRouteClick }) => {
+const RouteSearch = ({ onSearch }) => {
     const [origins, setOrigins] = useState([]);
     const [destinations, setDestinations] = useState([]);
     const [selectedOrigin, setSelectedOrigin] = useState('');
     const [selectedDestination, setSelectedDestination] = useState('');
-    const [routes, setRoutes] = useState([]);  // Definimos routes aquí
     const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-    const navigate = useNavigate();
 
     useEffect(() => {
+        // Fetch origins from the backend
         fetch(`${BACKEND_URL}/api/origins`)
             .then(response => response.json())
             .then(data => setOrigins(data))
@@ -20,6 +18,7 @@ const RouteSearch = ({ onSearch, onRouteClick }) => {
 
     useEffect(() => {
         if (selectedOrigin) {
+            // Fetch destinations based on the selected origin
             fetch(`${BACKEND_URL}/api/destinations?origin=${selectedOrigin}`)
                 .then(response => response.json())
                 .then(data => setDestinations(data))
@@ -28,14 +27,7 @@ const RouteSearch = ({ onSearch, onRouteClick }) => {
     }, [selectedOrigin, BACKEND_URL]);
 
     const handleSearch = () => {
-        fetch(`${BACKEND_URL}/api/routes?origin=${selectedOrigin}&destination=${selectedDestination}`)
-            .then(response => response.json())
-            .then(data => setRoutes(data))  // Asignamos los datos a routes aquí
-            .catch(error => console.error('Error fetching routes:', error));
-    };
-
-    const handleResultClick = (companyId) => {
-        navigate(`/company/${companyId}`);
+        onSearch(selectedOrigin, selectedDestination);
     };
 
     return (
@@ -59,18 +51,6 @@ const RouteSearch = ({ onSearch, onRouteClick }) => {
                 </select>
             </div>
             <button className="route-search-button" onClick={handleSearch}>Buscar</button>
-
-            <div className="routes-list">
-                {routes.map(route => (
-                    <div key={route.id} className="route-item" onClick={() => handleResultClick(route.TransportCompany.id)}>
-                        <h3>{route.origin} - {route.destination}</h3>
-                        <p>{route.TransportCompany.name}</p>
-                        <p>Salida: {route.departureTime}</p>
-                        <p>Llegada: {route.arrivalTime}</p>
-                        <p>Precio: S/{route.TransportCompany.price}</p>
-                    </div>
-                ))}
-            </div>
         </div>
     );
 };
