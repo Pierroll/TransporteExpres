@@ -1,5 +1,4 @@
 require('dotenv').config();
-console.log('Database URL:', process.env.DATABASE_URL);
 const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
 const passport = require('passport');
@@ -233,23 +232,10 @@ app.get('/api/transport-companies/:id', async (req, res) => {
     }
 });
 
-
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Server running on ${BACKEND_URL}`);
 });
-
-app.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login' }),
-    (req, res) => {
-        // El flag 'isNew' indica si el usuario ha sido creado en esta sesión
-        const isNew = req.user && req.user.created ? 'true' : 'false';
-        const redirectUrl = isNew === 'true'
-            ? `${FRONTEND_URL}/signup?promoCode=${req.user.promotionCode}&isNew=${isNew}`
-            : FRONTEND_URL;
-        res.redirect(redirectUrl);
-    }
-);
 
 app.get('/api/origins', async (req, res) => {
     try {
